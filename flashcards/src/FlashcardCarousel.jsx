@@ -2,9 +2,13 @@ import FlashCard from "./FlashCard";
 import "./style.css";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
+import { useState } from "react";
 
 function FlashcardCarousel(props) {
-  function makeFlashcard(question, answer, key) {
+  let isVisibleCard = []
+  function MakeFlashcard(question, answer, key) {
+    const [isVisible, setIsVisible] = useState(true)
+    isVisibleCard[key] = isVisible
     return (
       <Carousel.Item key={key}>
         <FlashCard question={question} answer={answer} />
@@ -12,12 +16,12 @@ function FlashcardCarousel(props) {
     );
   }
 
-  function makeFlashcards(flashcardsData) {
+  function MakeFlashcards(flashcardsData) {
     return flashcardsData.questions.map((f, i) =>
-      makeFlashcard(f.question, f.answer, i)
+      MakeFlashcard(f.question, f.answer, "question"+i)
     );
   }
-
+  let cards = MakeFlashcards(props.flashcardsData)
   return (
     <Card
       className="text-center"
@@ -25,7 +29,7 @@ function FlashcardCarousel(props) {
     >
       <h4>{props.flashcardsData.header}</h4>
       <Card.Body>
-        <Carousel>{makeFlashcards(props.flashcardsData)}</Carousel>
+        <Carousel>{cards.filter(c => isVisibleCard[c.key])}</Carousel>
       </Card.Body>
     </Card>
   );
