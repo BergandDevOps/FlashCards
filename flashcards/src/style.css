@@ -52,7 +52,7 @@ body {
 }
 
 .card__face--front {
-  background: crimson;
+  background: rgb(222, 173, 183);
 }
 
 .card__face--back {
