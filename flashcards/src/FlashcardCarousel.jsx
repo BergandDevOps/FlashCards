@@ -12,7 +12,7 @@ function FlashcardCarousel(props) {
     isVisibleCard[key] = isVisible;
     return (
       <Carousel.Item key={key}>
-        <FlashCard question={question} answer={answer} onClickMethod={() => { setIsVisible(!isVisible)} } />
+        <FlashCard question={question} answer={answer} onClickMethod={() => { setIsVisible(false)} } />
       </Carousel.Item>
     );
   }
