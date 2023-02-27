@@ -1,7 +1,7 @@
-import FlashCard from './FlashCard';
-import './style.css';
-import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
+import FlashCard from "./FlashCard";
+import "./style.css";
+import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 
 function FlashcardCarousel(props) {
   function makeFlashcard(question, answer, key) {
@@ -20,12 +20,14 @@ function FlashcardCarousel(props) {
 
   return (
     <Card
-      className='text-center container'
-      style={{ width: '500px', backgroundColor: '#ffe988' }}
+      className="text-center container"
+      style={{ width: "500px", backgroundColor: "#ffe988" }}
     >
       <h4>{props.flashcardsData.header}</h4>
       <Card.Body>
-        <Carousel>{makeFlashcards(props.flashcardsData)}</Carousel>
+        <Carousel interval={null}>
+          {makeFlashcards(props.flashcardsData)}
+        </Carousel>
       </Card.Body>
     </Card>
   );
