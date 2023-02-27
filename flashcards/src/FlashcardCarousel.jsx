@@ -13,11 +13,17 @@ function FlashcardCarousel(props) {
   }
 
   function makeFlashcards(flashcardsData) {
-    return flashcardsData.map((f, i) => makeFlashcard(f.question, f.answer, i));
+    return flashcardsData.questions.map((f, i) =>
+      makeFlashcard(f.question, f.answer, i)
+    );
   }
 
   return (
-    <Card style={{ width: "500px", backgroundColor: "grey" }}>
+    <Card
+      className="text-center"
+      style={{ width: "500px", backgroundColor: "grey" }}
+    >
+      <h4>{props.flashcardsData.header}</h4>
       <Card.Body>
         <Carousel>{makeFlashcards(props.flashcardsData)}</Carousel>
       </Card.Body>
