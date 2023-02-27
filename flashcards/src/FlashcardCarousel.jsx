@@ -8,7 +8,7 @@ function FlashcardCarousel(props) {
   return (
     <Carousel>
       <Carousel.Item>
-        <FlashCard />
+        <FlashCard question={"Question 1"} answer={"Answer 1"} />
       </Carousel.Item>
       <Carousel.Item>
         <FlashCard />
