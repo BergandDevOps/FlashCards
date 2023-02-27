@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 function FlashCard(props) {
   const [isActive, setActive] = useState(true);
+  let toRemove = false;
   const ToggleClass = () => {
     setActive(!isActive);
+    console.log("toggle")
   };
 
   return (
@@ -16,7 +18,8 @@ function FlashCard(props) {
         <div className='card__face card__face--back'>
           {props.answer}
           <br />
-          <button onClick={() => props.onClickMethod()} className='btn'>
+          {/* Ändra så att kortet inte tas bort direkt utan först när next kard kallas på eller så att removeCardMethod byter kort */}
+          <button onClick={() => props.removeCardMethod()} className='btn'> 
             Remove Card
           </button>
         </div>

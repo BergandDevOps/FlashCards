@@ -40,7 +40,7 @@ function FlashcardCarousel(props) {
         <FlashCard
           question={question}
           answer={answer}
-          onClickMethod={() => {
+          removeCardMethod={() => {
             setIsVisible(false);
           }}
         />
@@ -58,8 +58,6 @@ function FlashcardCarousel(props) {
   function resetGame() {
     for (let key in isVisibleCard) { 
       setIsVisibleCard[key](true);
-      // isVisibleCard[key] = false;
-      // console.log(isVisibleCard)
     }
   }
 
