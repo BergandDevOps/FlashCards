@@ -1,3 +1,13 @@
 
 Flashcards
 
+-flashcard Carousel 
+  -list of flashcards
+  -log of correct answers
+  -generate flashcard from data
+
+-Flashcard component
+  question
+  answer
+  input?
+  
