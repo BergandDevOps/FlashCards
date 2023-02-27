@@ -6,6 +6,30 @@ import { useState } from 'react';
 function FlashcardCarousel(props) {
   let isVisibleCard = [];
 
+  function displayCards() {
+    const visibleCards = cards.filter((c) => isVisibleCard[c.key]);
+    if (visibleCards.length > 0)
+      return cards.filter((c) => isVisibleCard[c.key]);
+    else
+      return (
+        <Carousel.Item>
+          <div className="scene scene--card">
+            <div className="card__face card__face--front">
+              YOU WIN!
+              <button
+                onClick={() => {
+                  resetGame(isVisibleCard);
+                }}
+                className="btn btn-primary"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </Carousel.Item>
+      );
+  }
+
   function MakeFlashcard(question, answer, key) {
     const [isVisible, setIsVisible] = useState(true);
     isVisibleCard[key] = isVisible;
@@ -28,6 +52,11 @@ function FlashcardCarousel(props) {
     );
   }
   let cards = MakeFlashcards(props.flashcardsData);
+
+  function resetGame() {
+    console.log(isVisibleCard);
+  }
+
   return (
     <Card
       className='text-center question-container'
@@ -36,7 +65,7 @@ function FlashcardCarousel(props) {
       <h1 className='mt-3'>{props.flashcardsData.header}</h1>
       <Card.Body>
         <Carousel interval={null} indicators={false}>
-          {cards.filter((c) => isVisibleCard[c.key])}
+          {displayCards()}
         </Carousel>
       </Card.Body>
     </Card>
