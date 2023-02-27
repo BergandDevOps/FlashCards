@@ -6,14 +6,12 @@ body {
 .box {
   padding: 30px;
   background-color: white;
-
   box-shadow: 0 0 5px 0 #888888;
 }
 
-.container {
-  max-width: 500px;
-
-  /* body { */
+.card {
+  display: flex;
+  align-items: center;
   font-family: sans-serif;
 }
 
