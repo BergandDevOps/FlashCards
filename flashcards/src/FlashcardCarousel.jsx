@@ -1,6 +1,7 @@
 import FlashCard from "./FlashCard";
 import "./style.css";
 import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 
 function FlashcardCarousel(props) {
   return (
