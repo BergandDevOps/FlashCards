@@ -1,33 +1,36 @@
-import FlashCard from "./FlashCard";
-import "./style.css";
-import Carousel from "react-bootstrap/Carousel";
-import Card from "react-bootstrap/Card";
+import FlashCard from './FlashCard';
+import './style.css';
+import Carousel from 'react-bootstrap/Carousel';
+import Card from 'react-bootstrap/Card';
+import { useState } from 'react';
 
 function FlashcardCarousel(props) {
-  function makeFlashcard(question, answer, key) {
+  let isVisibleCard = [];
+
+  function MakeFlashcard(question, answer, key) {
+    const [isVisible, setIsVisible] = useState(true);
+    isVisibleCard[key] = isVisible;
     return (
       <Carousel.Item key={key}>
-        <FlashCard question={question} answer={answer} />
+        <FlashCard question={question} answer={answer} isVisible={isVisible} />
       </Carousel.Item>
     );
   }
 
-  function makeFlashcards(flashcardsData) {
+  function MakeFlashcards(flashcardsData) {
     return flashcardsData.questions.map((f, i) =>
-      makeFlashcard(f.question, f.answer, i)
+      MakeFlashcard(f.question, f.answer, 'question' + i)
     );
   }
-
+  let cards = MakeFlashcards(props.flashcardsData);
   return (
     <Card
       className="text-center container"
-      style={{ width: "500px", backgroundColor: "#ffe988" }}
+      style={{ width: '500px', backgroundColor: '#ffe988' }}
     >
       <h4>{props.flashcardsData.header}</h4>
       <Card.Body>
-        <Carousel interval={null}>
-          {makeFlashcards(props.flashcardsData)}
-        </Carousel>
+        <Carousel>{cards.filter((c) => isVisibleCard[c.key])}</Carousel>
       </Card.Body>
     </Card>
   );
