@@ -19,9 +19,8 @@ body {
 
 .scene {
   display: inline-block;
-  width: 200px;
+  width: 400px;
   height: 260px;
-  /*   border: 1px solid #CCC; */
   margin: 40px 0;
   perspective: 600px;
 }
