@@ -30,7 +30,9 @@ function FlashcardCarousel(props) {
     >
       <h4>{props.flashcardsData.header}</h4>
       <Card.Body>
-        <Carousel>{cards.filter((c) => isVisibleCard[c.key])}</Carousel>
+        <Carousel interval={null}>
+          {cards.filter((c) => isVisibleCard[c.key])}
+        </Carousel>
       </Card.Body>
     </Card>
   );
