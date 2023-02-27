@@ -13,7 +13,15 @@ function FlashCard(props) {
         className={`card ${isActive ? 'null' : 'is-flipped'}`}
       >
         <div className='card__face card__face--front'>{props.question}</div>
-        <div className='card__face card__face--back'>{props.answer}</div>
+        <div className='card__face card__face--back'>
+          {props.answer}
+          <button
+            onClick={() => props.onClickMethod()}
+            className='btn btn-primary'
+          >
+            Remove Card
+          </button>
+        </div>
       </div>
     </div>
   );
