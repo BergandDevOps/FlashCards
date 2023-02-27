@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function FlashcardCarousel(props) {
   let isVisibleCard = [];
+  let setIsVisibleCard = []
 
   function displayCards() {
     const visibleCards = cards.filter((c) => isVisibleCard[c.key]);
@@ -15,7 +16,7 @@ function FlashcardCarousel(props) {
         <Carousel.Item>
           <div className="scene scene--card">
             <div className="card__face card__face--front">
-              YOU WIN!
+              Good job!
               <button
                 onClick={() => {
                   resetGame(isVisibleCard);
@@ -33,6 +34,7 @@ function FlashcardCarousel(props) {
   function MakeFlashcard(question, answer, key) {
     const [isVisible, setIsVisible] = useState(true);
     isVisibleCard[key] = isVisible;
+    setIsVisibleCard[key] = setIsVisible;
     return (
       <Carousel.Item key={key}>
         <FlashCard
@@ -54,7 +56,11 @@ function FlashcardCarousel(props) {
   let cards = MakeFlashcards(props.flashcardsData);
 
   function resetGame() {
-    console.log(isVisibleCard);
+    for (let key in isVisibleCard) { 
+      setIsVisibleCard[key](true);
+      // isVisibleCard[key] = false;
+      // console.log(isVisibleCard)
+    }
   }
 
   return (
