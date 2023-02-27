@@ -1,0 +1,18 @@
+/* alla element som heter "body" */
+
+body {
+
+    background-color: rgb(243, 243, 243);
+}    
+
+/* alla element med klassen "box*/
+.box{
+    padding: 30px;
+    background-color: white;
+
+    box-shadow: 0 0 5px 0 #888888;
+}
+
+.container {
+    max-width: 500px;
+}
