@@ -1,5 +1,4 @@
 import FlashCard from './FlashCard';
-import './style.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
@@ -12,7 +11,13 @@ function FlashcardCarousel(props) {
     isVisibleCard[key] = isVisible;
     return (
       <Carousel.Item key={key}>
-        <FlashCard question={question} answer={answer} onClickMethod={() => { setIsVisible(false)} } />
+        <FlashCard
+          question={question}
+          answer={answer}
+          onClickMethod={() => {
+            setIsVisible(false);
+          }}
+        />
       </Carousel.Item>
     );
   }
@@ -25,10 +30,10 @@ function FlashcardCarousel(props) {
   let cards = MakeFlashcards(props.flashcardsData);
   return (
     <Card
-      className="text-center container"
-      style={{ width: '500px', backgroundColor: '#ffe988' }}
+      className='text-center question-container'
+      style={{ width: '500px', backgroundColor: '#fdffcf' }}
     >
-      <h4>{props.flashcardsData.header}</h4>
+      <h1 className='mt-3'>{props.flashcardsData.header}</h1>
       <Card.Body>
         <Carousel interval={null} indicators={false}>
           {cards.filter((c) => isVisibleCard[c.key])}

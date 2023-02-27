@@ -1,25 +1,27 @@
-body {
-  background-color: rgb(243, 243, 243);
+h1 {
+  font-size: 2rem;
 }
 
-/* alla element med klassen "box*/
-.box {
-  padding: 30px;
-  background-color: white;
-  box-shadow: 0 0 5px 0 #888888;
+.question-container {
+  margin: 25px auto;
 }
 
 .card {
+  border-radius: 5px;
   display: flex;
   align-items: center;
   font-family: sans-serif;
+}
+
+.card-body {
+  padding: 0;
+  padding-bottom: 40px;
 }
 
 .scene {
   display: inline-block;
   width: 400px;
   height: 260px;
-  margin: 40px 0;
   perspective: 600px;
 }
 
@@ -54,6 +56,6 @@ body {
 }
 
 .card__face--back {
-  background: slateblue;
+  background: rgb(90, 151, 91);
   transform: rotateY(180deg);
 }
