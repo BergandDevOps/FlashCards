@@ -4,13 +4,15 @@ import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 
 function FlashcardCarousel(props) {
-  let isVisibleCard = [];
-  let setIsVisibleCard = [];
+  let isVisibleCardArray = [];
+  let setIsVisibleCardArray = [];
 
   function displayCards() {
-    const visibleCards = cards.filter((c) => isVisibleCard[c.key]);
+    const visibleCards = cards.filter((c) => isVisibleCardArray[c.key]);
     if (visibleCards.length > 0)
-      return cards.filter((c) => isVisibleCard[c.key]);
+      return (<Carousel interval={null} indicators={false}>
+        {cards.filter((c) => isVisibleCardArray[c.key])}
+      </Carousel>);
     else
       return (
         <Carousel.Item>
@@ -32,9 +34,15 @@ function FlashcardCarousel(props) {
   }
 
   function MakeFlashcard(question, answer, key) {
+    // usestate, flashcard rendered when isVisible = true
     const [isVisible, setIsVisible] = useState(true);
-    isVisibleCard[key] = isVisible;
-    setIsVisibleCard[key] = setIsVisible;
+    //add the usestate to list of all flashcard visability usestates
+    isVisibleCardArray[key] = isVisible;
+    setIsVisibleCardArray[key] = setIsVisible;
+    //make the flashcard
+    //removecard method uses setIsVisible of the current card to trigger change 
+    //in isVisibleCardArray which triggers a chagnge in visibleCards array used in the displayCards method
+    // thereby triggering the rebuild of the carusel
     return (
       <Carousel.Item key={key}>
         <FlashCard
@@ -56,24 +64,20 @@ function FlashcardCarousel(props) {
   let cards = MakeFlashcards(props.flashcardsData);
 
   function resetGame() {
-    for (let key in isVisibleCard) { 
-      setIsVisibleCard[key](true)
+    for (let key in isVisibleCardArray) { 
+      setIsVisibleCardArray[key](true)
     }
     
   }
 
   return (
-    <Card
+    <div
       className='text-center question-container'
       style={{ width: '500px', backgroundColor: '#fdffcf' }}
     >
       <h1 className='mt-3'>{props.flashcardsData.header}</h1>
-      <Card.Body>
-        <Carousel interval={null} indicators={false}>
-          {displayCards()}
-        </Carousel>
-      </Card.Body>
-    </Card>
+      {displayCards()}
+    </div>
   );
 }
 export default FlashcardCarousel;
