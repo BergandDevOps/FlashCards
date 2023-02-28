@@ -47,10 +47,11 @@ h1 {
   position: absolute;
   width: 100%;
   height: 100%;
+  padding: 0 15px;
   color: white;
   text-align: center;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 1.75rem;
   backface-visibility: hidden;
 }
 
