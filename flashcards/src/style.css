@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap");
 
 :root {
-  --main-bg-color: #343434;
-  --card-face-bg-color: #aa3355;
-  --card-back-bg-color: #5a975b;
+  --main-bg-color: #1a181cc3;
+  --card-face-bg-color: #e7afbf;
+  --card-back-bg-color: #aaddab;
   --main-font-color: #ffffff;
 }
 
 * {
-  font-family: 'Shantell Sans', cursive;
+  font-family: "Times New Roman", cursive;
 }
 
 h1 {
