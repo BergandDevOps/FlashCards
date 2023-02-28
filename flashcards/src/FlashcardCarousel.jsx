@@ -16,7 +16,7 @@ function FlashcardCarousel(props) {
         <Carousel.Item>
           <div className="scene scene--card">
             <div className="card__face card__face--front">
-              Good job!
+              Good work!
               <button
                 onClick={() => {
                   resetGame(isVisibleCard);
