@@ -4,7 +4,6 @@ function FlashCard(props) {
   const [isActive, setActive] = useState(true);
   const ToggleClass = () => {
     setActive(!isActive);
-    console.log('toggle');
   };
 
   return (
