@@ -91,6 +91,7 @@ function FlashcardCarousel(props) {
     for (let key in isVisibleCardArray) {
       setIsVisibleCardArray[key](true);
     }
+    setActiveCardIndex(0);
   }
 
   return (
