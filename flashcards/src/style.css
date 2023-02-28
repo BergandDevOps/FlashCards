@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
 
 :root {
-  --main-bg-color: #1f1f1f;
-  --card-face-bg-color: #deadb7;
+  --main-bg-color: #343434;
+  --card-face-bg-color: #aa3355;
   --card-back-bg-color: #5a975b;
   --main-font-color: #ffffff;
 }
@@ -30,7 +30,7 @@ h1 {
 }
 
 .card {
-  border-radius: 5px;
+  border: none;
   display: flex;
   align-items: center;
   font-family: sans-serif;
@@ -63,6 +63,7 @@ h1 {
 }
 
 .card__face {
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +85,7 @@ h1 {
 
 .card__face--back {
   background: var(--card-back-bg-color);
+  border: 1px solid var(--card-back-bg-color);
   transform: rotateY(180deg);
 }
 
