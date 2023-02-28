@@ -4,19 +4,33 @@ import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 
 function FlashcardCarousel(props) {
-  let isVisibleCard = [];
-  let setIsVisibleCard = [];
+  let isVisibleCardArray = [];
+  let setIsVisibleCardArray = [];
+  let cards = MakeFlashcards(props.flashcardsData);
+  const [visibleCards, setVisibleCards] = useState(cards)
 
+  const [activeCardIndex, setActiveCardIndex] = useState(0)
+  
+
+  const handleSelect = (selectedIndex, e) => {
+    setActiveCardIndex(selectedIndex);
+  };
   function displayCards() {
-    const visibleCards = cards.filter((c) => isVisibleCard[c.key]);
-    if (visibleCards.length > 0)
-      return cards.filter((c) => isVisibleCard[c.key]);
-    else
+    
+    if (visibleCards.length > 0) {
+      //setVisibleCards(cards.filter((c) =>  isVisibleCardArray[c.key]))
+      return (
+        <Carousel activeIndex={activeCardIndex} onSelect={handleSelect} interval={null} indicators={false}>
+          {cards.filter((c) => isVisibleCardArray[c.key] )}
+          {/* {visibleCards} */}
+    </Carousel>);
+    
+  } else
       return (
         <Carousel.Item>
-          <div className='scene scene--card'>
-            <div className='card__face card__face--front'>
-              Good job!
+          <div className="scene scene--card">
+            <div className="card__face card__face--front">
+              Good work!
               <button
                 onClick={() => {
                   resetGame();
@@ -32,16 +46,24 @@ function FlashcardCarousel(props) {
   }
 
   function MakeFlashcard(question, answer, key) {
+    // usestate, flashcard rendered when isVisible = true
     const [isVisible, setIsVisible] = useState(true);
-    isVisibleCard[key] = isVisible;
-    setIsVisibleCard[key] = setIsVisible;
+    //add the usestate to list of all flashcard visability usestates
+    isVisibleCardArray[key] = isVisible;
+    setIsVisibleCardArray[key] = setIsVisible;
+    //make the flashcard
+    //removecard method uses setIsVisible of the current card to trigger change 
+    //in isVisibleCardArray which triggers a chagnge in visibleCards array used in the displayCards method
+    // thereby triggering the rebuild of the carusel
     return (
       <Carousel.Item key={key}>
         <FlashCard
           question={question}
           answer={answer}
           removeCardMethod={() => {
+            setActiveCardIndex(0) //(activeCardIndex-1+visibleCards.length)%visibleCards.length
             setIsVisible(false);
+            displayCards()
           }}
         />
       </Carousel.Item>
@@ -53,24 +75,23 @@ function FlashcardCarousel(props) {
       MakeFlashcard(f.question, f.answer, 'question' + i)
     );
   }
-  let cards = MakeFlashcards(props.flashcardsData);
+  
 
   function resetGame() {
-    cards.map((c) => (isVisibleCard[c.key] = true));
+    for (let key in isVisibleCardArray) { 
+      setIsVisibleCardArray[key](true)
+    }
+    
   }
 
   return (
-    <Card
+    <div
       className='text-center question-container'
       style={{ width: '500px', backgroundColor: '#fdffcf' }}
     >
       <h1 className='mt-3'>{props.flashcardsData.header}</h1>
-      <Card.Body>
-        <Carousel interval={null} indicators={false}>
-          {displayCards()}
-        </Carousel>
-      </Card.Body>
-    </Card>
+      {displayCards()}
+    </div>
   );
 }
 export default FlashcardCarousel;
