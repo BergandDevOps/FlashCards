@@ -9,10 +9,16 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const flashcardsData = {
   header: 'Heather',
   questions: [
-    { question: 'Question 1', answer: 'Answer 1' },
-    { question: 'Question 2', answer: 'Answer 2' },
-    { question: 'Question 3', answer: 'Answer 3' },
-    { question: 'Question 4', answer: 'Answer 4' },
+    { question: 'Vad heter Sveriges huvudstad?', answer: 'Stockholm' },
+    { question: 'Vilket är det bästa länet i Sverige?', answer: 'Norrbotten' },
+    {
+      question: 'Vilken är den finaste staden i hela världen?',
+      answer: 'Luleå',
+    },
+    {
+      question: 'Hur många cyklar finns det på tunnelbanan?',
+      answer: 'Alltför få',
+    },
   ],
 };
 
@@ -21,4 +27,3 @@ root.render(
     <FlashcardCarousel flashcardsData={flashcardsData} />
   </React.StrictMode>
 );
-
