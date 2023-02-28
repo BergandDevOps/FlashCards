@@ -6,14 +6,26 @@ import { useState } from 'react';
 function FlashcardCarousel(props) {
   let isVisibleCardArray = [];
   let setIsVisibleCardArray = [];
+  let cards = MakeFlashcards(props.flashcardsData);
+  const [visibleCards, setVisibleCards] = useState(cards)
 
+  const [activeCardIndex, setActiveCardIndex] = useState(0)
+  
+
+  const handleSelect = (selectedIndex, e) => {
+    setActiveCardIndex(selectedIndex);
+  };
   function displayCards() {
-    const visibleCards = cards.filter((c) => isVisibleCardArray[c.key]);
-    if (visibleCards.length > 0)
-      return (<Carousel interval={null} indicators={false}>
-        {cards.filter((c) => isVisibleCardArray[c.key])}
-      </Carousel>);
-    else
+    
+    if (visibleCards.length > 0) {
+      //setVisibleCards(cards.filter((c) =>  isVisibleCardArray[c.key]))
+      return (
+        <Carousel activeIndex={activeCardIndex} onSelect={handleSelect} interval={null} indicators={false}>
+          {cards.filter((c) => isVisibleCardArray[c.key] )}
+          {/* {visibleCards} */}
+    </Carousel>);
+    
+  } else
       return (
         <Carousel.Item>
           <div className="scene scene--card">
@@ -49,7 +61,9 @@ function FlashcardCarousel(props) {
           question={question}
           answer={answer}
           removeCardMethod={() => {
+            setActiveCardIndex(0) //(activeCardIndex-1+visibleCards.length)%visibleCards.length
             setIsVisible(false);
+            displayCards()
           }}
         />
       </Carousel.Item>
@@ -61,7 +75,7 @@ function FlashcardCarousel(props) {
       MakeFlashcard(f.question, f.answer, 'question' + i)
     );
   }
-  let cards = MakeFlashcards(props.flashcardsData);
+  
 
   function resetGame() {
     for (let key in isVisibleCardArray) { 
