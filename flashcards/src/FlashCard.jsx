@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 function FlashCard(props) {
   const [isActive, setActive] = useState(true);
-  let toRemove = false;
   const ToggleClass = () => {
     setActive(!isActive);
     console.log('toggle');
