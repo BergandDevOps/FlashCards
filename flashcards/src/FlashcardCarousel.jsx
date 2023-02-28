@@ -1,11 +1,11 @@
 import FlashCard from './FlashCard';
-import './style.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 
 function FlashcardCarousel(props) {
   let isVisibleCard = [];
+  let setIsVisibleCard = [];
 
   function displayCards() {
     const visibleCards = cards.filter((c) => isVisibleCard[c.key]);
@@ -16,7 +16,7 @@ function FlashcardCarousel(props) {
         <Carousel.Item>
           <div className="scene scene--card">
             <div className="card__face card__face--front">
-              YOU WIN!
+              Good job!
               <button
                 onClick={() => {
                   resetGame();
@@ -34,12 +34,13 @@ function FlashcardCarousel(props) {
   function MakeFlashcard(question, answer, key) {
     const [isVisible, setIsVisible] = useState(true);
     isVisibleCard[key] = isVisible;
+    setIsVisibleCard[key] = setIsVisible;
     return (
       <Carousel.Item key={key}>
         <FlashCard
           question={question}
           answer={answer}
-          onClickMethod={() => {
+          removeCardMethod={() => {
             setIsVisible(false);
           }}
         />
@@ -60,10 +61,10 @@ function FlashcardCarousel(props) {
 
   return (
     <Card
-      className="text-center container"
-      style={{ width: '500px', backgroundColor: '#ffe988' }}
+      className="text-center question-container"
+      style={{ width: '500px', backgroundColor: '#fdffcf' }}
     >
-      <h4>{props.flashcardsData.header}</h4>
+      <h1 className="mt-3">{props.flashcardsData.header}</h1>
       <Card.Body>
         <Carousel interval={null} indicators={false}>
           {displayCards()}
