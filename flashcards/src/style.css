@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
 
+:root {
+  --main-bg-color: #1f1f1f;
+  --card-face-bg-color: #deadb7;
+  --card-back-bg-color: #5a975b;
+  --main-font-color: #ffffff;
+}
+
 * {
   font-family: 'Shantell Sans', cursive;
 }
 
 h1 {
-  color: white;
+  color: var(--main-font-color);
   margin-top: 1rem;
   font-size: 2rem;
 }
 
 .question-container {
-  background-color: rgb(31, 31, 31);
+  background-color: var(--main-bg-color);
   width: 500px;
   margin: 25px auto;
   padding: 5px 0 40px 0;
@@ -64,7 +71,7 @@ h1 {
   width: 100%;
   height: 100%;
   padding: 0 30px;
-  color: white;
+  color: var(--main-font-color);
   text-align: center;
   font-weight: bold;
   font-size: 1.75rem;
@@ -72,11 +79,11 @@ h1 {
 }
 
 .card__face--front {
-  background: rgb(222, 173, 183);
+  background: var(--card-face-bg-color);
 }
 
 .card__face--back {
-  background: rgb(90, 151, 91);
+  background: var(--card-back-bg-color);
   transform: rotateY(180deg);
 }
 
