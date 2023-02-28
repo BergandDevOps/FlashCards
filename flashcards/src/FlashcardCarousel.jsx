@@ -94,10 +94,7 @@ function FlashcardCarousel(props) {
   }
 
   return (
-    <div
-      className="text-center question-container"
-      style={{ width: "500px", backgroundColor: "#fdffcf" }}
-    >
+    <div className="text-center question-container">
       <h1 className="mt-3">{props.flashcardsData.header}</h1>
       {displayCards()}
     </div>

@@ -1,15 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap');
+
+:root {
+  --main-bg-color: #343434;
+  --card-face-bg-color: #aa3355;
+  --card-back-bg-color: #5a975b;
+  --main-font-color: #ffffff;
+}
 
 * {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Shantell Sans', cursive;
 }
 
 h1 {
+  color: var(--main-font-color);
+  margin-top: 1rem;
   font-size: 2rem;
 }
 
 .question-container {
+  background-color: var(--main-bg-color);
+  width: 500px;
   margin: 25px auto;
+  padding: 5px 0 40px 0;
 }
 
 .carousel-control-next,
@@ -18,7 +30,7 @@ h1 {
 }
 
 .card {
-  border-radius: 5px;
+  border: none;
   display: flex;
   align-items: center;
   font-family: sans-serif;
@@ -51,6 +63,7 @@ h1 {
 }
 
 .card__face {
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,7 +72,7 @@ h1 {
   width: 100%;
   height: 100%;
   padding: 0 30px;
-  color: white;
+  color: var(--main-font-color);
   text-align: center;
   font-weight: bold;
   font-size: 1.75rem;
@@ -67,11 +80,12 @@ h1 {
 }
 
 .card__face--front {
-  background: rgb(222, 173, 183);
+  background: var(--card-face-bg-color);
 }
 
 .card__face--back {
-  background: rgb(90, 151, 91);
+  background: var(--card-back-bg-color);
+  border: 1px solid var(--card-back-bg-color);
   transform: rotateY(180deg);
 }
 
