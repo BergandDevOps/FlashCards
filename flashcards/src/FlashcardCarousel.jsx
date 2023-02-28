@@ -14,14 +14,14 @@ function FlashcardCarousel(props) {
     else
       return (
         <Carousel.Item>
-          <div className="scene scene--card">
-            <div className="card__face card__face--front">
+          <div className='scene scene--card'>
+            <div className='card__face card__face--front'>
               Good job!
               <button
                 onClick={() => {
                   resetGame();
                 }}
-                className="btn btn-primary"
+                className='btn btn-outline-light'
               >
                 Reset
               </button>
@@ -61,10 +61,10 @@ function FlashcardCarousel(props) {
 
   return (
     <Card
-      className="text-center question-container"
+      className='text-center question-container'
       style={{ width: '500px', backgroundColor: '#fdffcf' }}
     >
-      <h1 className="mt-3">{props.flashcardsData.header}</h1>
+      <h1 className='mt-3'>{props.flashcardsData.header}</h1>
       <Card.Body>
         <Carousel interval={null} indicators={false}>
           {displayCards()}

@@ -5,7 +5,7 @@ function FlashCard(props) {
   let toRemove = false;
   const ToggleClass = () => {
     setActive(!isActive);
-    console.log("toggle")
+    console.log('toggle');
   };
 
   return (
@@ -19,7 +19,10 @@ function FlashCard(props) {
           {props.answer}
           <br />
           {/* Ändra så att kortet inte tas bort direkt utan först när next kard kallas på eller så att removeCardMethod byter kort */}
-          <button onClick={() => props.removeCardMethod()} className='btn'> 
+          <button
+            onClick={() => props.removeCardMethod()}
+            className='btn btn-outline-light'
+          >
             Remove Card
           </button>
         </div>
