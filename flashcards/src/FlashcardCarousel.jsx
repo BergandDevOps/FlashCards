@@ -56,7 +56,10 @@ function FlashcardCarousel(props) {
   let cards = MakeFlashcards(props.flashcardsData);
 
   function resetGame() {
-    cards.map((c) => (isVisibleCard[c.key] = true));
+    for (let key in isVisibleCard) { 
+      setIsVisibleCard[key](true)
+    }
+    
   }
 
   return (
