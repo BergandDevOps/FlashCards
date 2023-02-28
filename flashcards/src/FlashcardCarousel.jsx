@@ -19,7 +19,7 @@ function FlashcardCarousel(props) {
               YOU WIN!
               <button
                 onClick={() => {
-                  resetGame(isVisibleCard);
+                  resetGame();
                 }}
                 className="btn btn-primary"
               >
@@ -55,7 +55,7 @@ function FlashcardCarousel(props) {
   let cards = MakeFlashcards(props.flashcardsData);
 
   function resetGame() {
-    console.log(isVisibleCard);
+    cards.map((c) => (isVisibleCard[c.key] = true));
   }
 
   return (
